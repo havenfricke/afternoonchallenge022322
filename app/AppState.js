@@ -5,6 +5,8 @@ class AppState extends EventEmitter {
   /** @type {import('./Models/Spell').Spell[]} */
   dndApiSpells = []
 
+  mySpells = []
+
   activeSpell = {}
 }
 

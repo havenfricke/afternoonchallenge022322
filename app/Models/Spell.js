@@ -17,9 +17,34 @@ export class Spell {
     <p class="text-center">${this.duration} | Level ${this.level} | ${this.range}</p>
     <p style="height:60vh;width:100%;font:16px Arial, Serif;overflow:auto;" class="p-3">${this.description}</p>
     <div class="d-flex justify-content-center">
-      <button class="col-4 rounded-pill selectable btn-success p-2 mb-4" onclick="app.">Add</button>
+      ${this.ButtonTemplate}
     </div>
     `
   }
 
+  get mySpellsTemplate() {
+    return `
+    <div class="p-3 border-bottom text-dark rounded text-center col-8 bg-light mt-4">
+    <h4>${this.name}</h4>
+    <div class="col d-flex p-3 align-items-center justify-content-center">
+      <input class="p-3 col-2" type="checkbox"> READY SPELL
+      <div>
+      </div>
+    </div>
+    <div class="d-flex justify-content-center">
+      <button class="col-6 btn-info selectable rounded-pill" onclick="app.mySpellsController.setActiveSpell(${this.id})">INFO</button>
+    </div>
+  </div>
+  `
+  }
+
+  get ButtonTemplate() {
+    let button = ''
+    if (this.id) {
+      button = `<button class="col-4 rounded-pill selectable btn-danger fs-4 p-1 mb-4" onclick="app.mySpellsController.removeSpell()">-</button>`
+    } else {
+      button = `<button class="col-4 rounded-pill selectable btn-success fs-4 p-1 mb-4" onclick="app.mySpellsController.saveSpell()">+</button>`
+    }
+    return button
+  }
 }
