@@ -12,7 +12,8 @@ async function _getMySpells() {
 function _drawMySpells() {
   let template = ''
   ProxyState.mySpells.forEach(s => template += s.mySpellsTemplate)
-  document.getElementById('spells-right').innerHTML = template
+  document.getElementById('spell-right').innerHTML = template
+  console.log('drawMyspells')
 }
 export class MySpellsController {
   constructor() {
@@ -26,6 +27,14 @@ export class MySpellsController {
       await mySpellsService.saveSpell()
     } catch (error) {
       console.error(error)
+    }
+  }
+
+  async removeSpell() {
+    try {
+      await mySpellsService.removeSpell()
+    } catch (error) {
+      console.log(error)
     }
   }
   setActiveSpell(id) {

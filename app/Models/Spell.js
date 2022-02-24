@@ -22,6 +22,16 @@ export class Spell {
     `
   }
 
+  get ButtonTemplate() {
+    let button = ''
+    if (this.id) {
+      button = `<button class="col-4 rounded-pill selectable btn-danger fs-4 p-1 mb-4" onclick="app.mySpellsController.removeSpell()">Remove</button>`
+    } else {
+      button = `<button class="col-4 rounded-pill selectable btn-success fs-4 p-1 mb-4" onclick="app.mySpellsController.saveSpell()">+</button>`
+    }
+    return button
+  }
+
   get mySpellsTemplate() {
     return `
     <div class="p-3 border-bottom text-dark rounded text-center col-8 bg-light mt-4">
@@ -32,19 +42,9 @@ export class Spell {
       </div>
     </div>
     <div class="d-flex justify-content-center">
-      <button class="col-6 btn-info selectable rounded-pill" onclick="app.mySpellsController.setActiveSpell(${this.id})">INFO</button>
+      <button class="col-6 btn-info selectable rounded-pill" onclick="app.mySpellsController.setActiveSpell('${this.id}')">INFO</button>
     </div>
   </div>
   `
-  }
-
-  get ButtonTemplate() {
-    let button = ''
-    if (this.id) {
-      button = `<button class="col-4 rounded-pill selectable btn-danger fs-4 p-1 mb-4" onclick="app.mySpellsController.removeSpell()">-</button>`
-    } else {
-      button = `<button class="col-4 rounded-pill selectable btn-success fs-4 p-1 mb-4" onclick="app.mySpellsController.saveSpell()">+</button>`
-    }
-    return button
   }
 }
