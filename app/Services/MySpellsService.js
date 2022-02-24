@@ -20,6 +20,7 @@ class MySpellsService {
     let spell = ProxyState.mySpells.find(s => s.id == id)
     ProxyState.activeSpell = spell
   }
+
   removeSpell() {
     let id = ProxyState.activeSpell.id
     const res = sandboxApi.delete(id)
@@ -27,6 +28,15 @@ class MySpellsService {
     ProxyState.activeSpell = {}
     ProxyState.mySpells = ProxyState.mySpells.filter(s => s.id != id)
   }
+
+  async prepareSpell(id) {
+    let preparedSpell = ProxyState.mySpells.find(s => s.id == id)
+    console.log(preparedSpell)
+    preparedSpell.prepared = preparedSpell.prepared
+    const res = await sandboxApi.put(id, preparedSpell)
+    ProxyState.mySpells = ProxyState.mySpells
+  }
+
 }
 
 

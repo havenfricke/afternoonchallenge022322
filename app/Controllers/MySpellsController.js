@@ -40,4 +40,12 @@ export class MySpellsController {
   setActiveSpell(id) {
     mySpellsService.setActiveSpell(id)
   }
+
+  async prepareSpell(id) {
+    try {
+      await mySpellsService.prepareSpell(id)
+    } catch (error) {
+      console.error(error);
+    }
+  }
 }

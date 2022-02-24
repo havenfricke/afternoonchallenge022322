@@ -37,7 +37,7 @@ export class Spell {
     <div class="p-3 border-bottom text-dark rounded text-center col-8 bg-light mt-4">
     <h4>${this.name}</h4>
     <div class="col d-flex p-3 align-items-center justify-content-center">
-      <input class="p-3 col-2" type="checkbox"> READY SPELL
+      <input class="p-3 col-2" type="checkbox" ${this.prepared ? 'checked' : ''} onclick="app.mySpellsController(${this.id})"> READY SPELL
       <div>
       </div>
     </div>
